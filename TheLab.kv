@@ -1,12 +1,109 @@
+WidgetsExample:
 
-AnchorLayoutSample:
+#PageLayoutExample:
+#ScrollViewExample:
+#StackLayoutExample:
+#GridLayoutExample:
+#AnchorLayoutSample:
 #BoxLayoutExample:
 #MainWidget:
 
-<AnchorLayoutSample>:
 
+<WidgetsExample@GridLayout>:
+    cols:2
+    Button:
+        text: "กดตรงนี้"
+        font_name: 'fonts/Prompt-Light.ttf'
+        on_press: root.on_button_click()
+    Label:
+        text: root.my_text
+        font_name: 'fonts/Prompt-Light.ttf'
+
+
+<PageLayoutExample@PageLayout>:
+    ScrollViewExample:
+    StackLayoutExample:
+    GridLayoutExample:
+    AnchorLayoutSample:
+    BoxLayoutExample:
+    MainWidget:
+
+
+
+<ScrollViewExample@ScrollView>:
+    StackLayoutExample:
+        size_hint:1,None
+        height:self.minimum_height
+
+
+
+
+<StackLayoutExample>:
+    #left-right top-bottom
+    #orientation:"lr-bt"
+    
+    #left, top , right, bottom
+    padding: ("40dp", "40dp","40dp","40dp")
+    spacing:"20dp","20dp"
+
+
+
+<GridLayoutExample@GridLayout>:
+    #rows
+    #cols
+    rows:2
+    #cols: 3
+    Button:
+        text: "A"
+        size_hint:None,1
+        weight:'80dp'
+    BoxLayoutExample:
+        size_hint:None,1
+        weight:'80dp'
+    Button:
+        text: "B"
+    Button:
+        text: "C"
+    Button:
+        text: "D"
+    BoxLayoutExample:
+        size_hint:None,1
+        weight:'80dp'
+    Button:
+        text: "E"
+        size_hint:None,1
+        weight:'80dp'
+    Button:
+        text: "F"
+    Button:
+        text: "G"
+    Button:
+        text: "H"
+
+
+<AnchorLayoutSample>:
+    #anchor_x คือ right(ขวา), left(ซ้าย), center(กลาง)
+    anchor_x: "center"
+    #anchor_y คือ bottom(ล่าง), top(บน), center(กลาง)
+    anchor_y: "top"
+    BoxLayout:
+        size_hint:.2,.2
+        Button:
+            text:"A"
+        Button:
+            text:"B"
+        
+        Button:
+            text:"A"
+        Button:
+            text:"B"
+        Button:
+            text:"A"
+        Button:
+            text:"B"
 
 <BoxLayoutExample>:
+
     orientation:"vertical"
     Label:
         text: "หี"
@@ -17,13 +114,17 @@ AnchorLayoutSample:
         orientation:"vertical"
         spacing:"10dp"
         Button:
-            text: "B1"
+            text: "1.หีเหม็น"
+            font_name: 'angsana.ttc'
         Button:
-            text: "B2"
+            text: "2.หีใหญ่"
+            font_name: 'angsana.ttc'
         Button:
-            text: "B3"
+            text: "3.หีเล็ก"
+            font_name: 'angsana.ttc'
         Button:
-            text: "B4"
+            text: "4.หีเหว"
+            font_name: 'angsana.ttc'
 
 
 

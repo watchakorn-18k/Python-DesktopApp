@@ -10,14 +10,25 @@ WidgetsExample:
 
 
 <WidgetsExample@GridLayout>:
-    cols:2
+    cols:3
+    ToggleButton:
+        text:"ปิด"
+        on_state: root.on_toggle_button_state(self)   
+        font_name: 'fonts/ChulabhornLikitText-Light.otf' 
+        font_size:"20dp"
+        size_hint:None,1
+        width:"100dp"
     Button:
-        text: "กดตรงนี้"
-        font_name: 'fonts/Prompt-Light.ttf'
+        text: "นับ"
+        font_name: 'fonts/ChulabhornLikitText-Light.otf'
+        font_size:"80dp"
         on_press: root.on_button_click()
+        disabled: not root.count_enabled
     Label:
         text: root.my_text
-        font_name: 'fonts/Prompt-Light.ttf'
+        font_name: 'fonts/Lcd.ttf'
+        font_size:"80dp"
+        color:1,.5,1,1
 
 
 <PageLayoutExample@PageLayout>:

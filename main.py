@@ -1,8 +1,8 @@
-# -*- encoding: utf-8 -*-
-
+#!/usr/bin/env python
+# -- coding: utf-8 --
 from kivy.app import App
 from kivy.metrics import dp
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty,BooleanProperty
 from kivy.uix.stacklayout import StackLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.anchorlayout import AnchorLayout
@@ -13,11 +13,35 @@ from kivy.uix.widget import Widget
 
 class WidgetsExample(GridLayout):
     count = 0
-    my_text = StringProperty("ฮาโหลววววว")
+    count_enabled = BooleanProperty(False)
+    my_text = StringProperty("0")
+
+    
     def on_button_click(self):
-        print("กดแล้วนะ")
-        self.count += 1
-        self.my_text = f"{self.count}"
+        if self.count_enabled == True:
+            print("กดแล้วนะ")
+            self.count += 1
+            self.my_text = f"{self.count}"
+            
+
+    
+    def on_toggle_button_state(self,widget):
+        print("toggle state"+ widget.state)
+        if widget.state == "normal":
+            #normal
+            widget.text = "ปิด"
+            widget.font_name = 'fonts/ChulabhornLikitText-Light.otf'
+            widget.font_size = "20dp"
+            self.count_enabled = False
+        else:
+            #down
+            widget.text = "เปิด"
+            widget.font_name = 'fonts/ChulabhornLikitText-Light.otf'
+            widget.font_size = "20dp"
+            self.count_enabled = True
+
+
+        
 
 
 
@@ -61,6 +85,6 @@ class BoxLayoutExample(BoxLayout):
 class MainWidget(Widget):
     pass
 
-class TheLabApp(App):
+class ProgrameTestDevByProtonApp(App):
     pass
-TheLabApp().run()
+ProgrameTestDevByProtonApp().run()

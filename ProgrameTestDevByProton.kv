@@ -1,5 +1,6 @@
-WidgetsExample:
-
+#############
+#ImagesExample:
+#WidgetsExample:
 #PageLayoutExample:
 #ScrollViewExample:
 #StackLayoutExample:
@@ -7,7 +8,54 @@ WidgetsExample:
 #AnchorLayoutSample:
 #BoxLayoutExample:
 #MainWidget:
+#CanvasExample1:
+#CanvasExample2:
+CanvasExample3:
 
+#:set s dp(150)
+<CanvasExample1>:
+    canvas:
+        Rectangle:
+            pos:self.center_x-s/2,self.center_y-s/2
+            size:s,s
+        Ellipse:
+            pos:200,500
+            size:s ,s/2
+        Line:
+            points:(0,0,self.width/4,100,self.width/2,0,self.width*3/4,100,self.width,0)
+            width: 2
+
+<CanvasExample2>:
+    canvas:
+        Line:
+            points:(0,self.height/2,self.width,self.height/2)
+            width:2
+
+        Line:
+            points:(self.width/2,0,self.width/2,self.height)
+            width:2
+
+
+<CanvasExample3>:
+    canvas:
+        Line:
+            circle: (200,200,100)  # center_x,center_y,radius  
+            width:2
+        Line:
+            ellipse: (500,300,100,200) # center_x,center_y,radius_x , radius_y
+            width: 2
+
+
+<ImagesExample@GridLayout>:
+    cols:3
+    spacing:"10dp"
+    Image:
+        source:"images/cake.jpg"
+    Image:
+        source:"images/cake.jpg"
+        allow_stretch:True
+    Image:
+        source:"images/cake.jpg"
 
 <WidgetsExample@GridLayout>:
     cols:3
@@ -29,7 +77,42 @@ WidgetsExample:
         font_name: 'fonts/Lcd.ttf'
         font_size:"80dp"
         color:1,.5,1,1
-
+    Switch:
+        id : my_swtich
+        on_active: root.on_switch_active(self)
+        size_hint:None,1
+        width:"100dp"
+        active: True
+    Slider:
+        id : my_slider
+        min:0
+        max:100
+        value: 50
+        on_value: root.on_slider_value(self)
+        orientation:"vertical"
+        disabled: not my_swtich.active
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: str(int(my_slider.value))
+            font_name: 'fonts/Lcd.ttf'
+            font_size:"80dp"
+            color:1,.5,1,1
+        ProgressBar:
+            max: 100
+            value: my_slider.value
+    TextInput:
+        id: my_text_input
+        size_hint: None,1
+        widgth: "100dp"
+        text:"กรอกคะแนน"
+        multiline:False
+        font_name : 'fonts/ChulabhornLikitText-Light.otf'
+        on_text_validate: root.on_text_validate(self)
+    Label:
+        text: str(root.text_input_str)
+        font_name : 'fonts/ChulabhornLikitText-Light.otf'
+        
 
 <PageLayoutExample@PageLayout>:
     ScrollViewExample:
